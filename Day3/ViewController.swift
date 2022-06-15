@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        setup()
         loadData()
+        setup()
     }
     
     func setup() {
@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         txtLabel.text = "Book List"
-        
     }
     
     func loadData() {
