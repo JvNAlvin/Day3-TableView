@@ -24,7 +24,8 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        txtLabel.text = "TableView"
+        txtLabel.text = "Book List"
+        
     }
     
     func loadData() {
