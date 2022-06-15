@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController {
 
@@ -38,16 +39,17 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TableViewCell else { return TableViewCell() }
         cell.txtLabel.text = bookData.result[indexPath.row].title
-        cell.txtAuthor.text = bookData.result[indexPath.row].author
-        cell.txtYear.text = "\(bookData.result[indexPath.row].year)"
+        cell.txtAuthor.text = bookData.result[indexPath.row].authors?[0]
+        cell.txtYear.text = "\(bookData.result[indexPath.row].status ?? "N/A")"
+        cell.imgView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.imgView.sd_setImage(with: URL(string: "\(bookData.result[indexPath.row].thumbnailUrl ?? "")"), placeholderImage: UIImage(named: "Placeholder_book.svg"))
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("\(bookData.result[indexPath.row].title) selected!")
-        
     }
 }
 
