@@ -49,7 +49,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("\(bookData.result[indexPath.row].title) selected!")
+        print("\(bookData.result[indexPath.row].title ?? "N.A") selected!")
     }
 }
 
